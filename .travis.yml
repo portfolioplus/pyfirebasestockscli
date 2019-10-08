@@ -1,0 +1,25 @@
+language: python
+python:
+- '3.6'
+cache: pip
+install:
+- pip install tox-travis coveralls
+script:
+- tox
+deploy:
+  provider: pypi
+  skip_cleanup: true
+  distributions: bdist_wheel
+  user:
+    secure: Rlti08niki+miQbV/VB58rVnBBpByayGQOfv5PXBw/OgC6LQiLzLRA4V2QNXCMZ4gkm9LsLY6AVK8vV/BAwzdndckc11cLxCA/5sKh873fGZvBwfrImz51NSvbhm6k9KcI9N45lDBcjz4zybJzMJUEF0rVu5E9fwYlVuC5dGxhXH2C+o87Xn8DKWarBNaNHHqE9igVtzx22BZzS1GOQ05YFveLyfzB1VnnZKJAlTJlEhFGVGGiifdC3+BsCq6NykYeUDoaoTj0CBsWI/9y5IZzdZ/HSDsImx60PF/e0KlkfhUg5witR6rcyMIMt4ciUgtl0Kut5cJhxQ4UW6SBrlpn0JGx3h2wFLnhfY0S63+/4qV0TVXXoV1ermT6kkDJL1Lehoe6NMVRwN9yBPxtRdsN/5qBIDw8CPvTcTu8XCqXehVPRSpMrK/VkGUuTB0Jpxo3JyGMcPYGn0tVsyIK8+ySUuivjX5/KbKPPOuH412xnMRWGmKaXOBGCTfC0bWoawRxGEE1a11o0gKlgEQPTTgiKoAtS2RERCTzort0JU7lWFyE3U4yDrKJ7CIVqx54vzghMwWk33dfsQHSy+XfByekPg+1CgtWPcHGScPpZ3C3yWnN3iqB2RGsa8/PO7hnjgcDvghgbZvpgDGnRx1jV0RrO/IVfkSooUxwpClRKq0kc=
+  password:
+    secure: cf/axSZrl2hIiBFKyLBrwBcs/TIOdx6XkgOHrpizKHuUu+nYPXuWfleJOZgJTP8DQhOCNdgcfun8NjJldoy5X5ASSAMT9LPed64GyDntEw24hQWjFxL5kVlWfUb0A1v/bouwXYHG62AptWkv8xEGzK/5m8DHoIk1DUcG5YR3rPowZMXhnJv9sQQQCafYAlFo/WIC0X3LDTmTPKDqlJm3PN5OT8CdfNiKyd/OwFYwWUqfn5yjfRoZC/uiLYWgVpgA1kvW5NCj0PFd55G9YR64WjQqXEe1DF1w6YeZaMJjUg3n0GZI2G67Cwse2PmIyMPv5g01sNkBswNx2aCtIXMDgqDxQjBzwoSo0Jji+XH4AC2+TRL7XPQUg98IYks17AHaQpMnzKzLKJu34ywA8OBKXsXDQZzAcloltT0T4ziyx38OX23dJBkIQyOY4mWpkF1iGHwIFwv9QOPOqQZd8XmVDw+Iea+pY52bGRUwnufn4vcCg+UVe5lFzGrth2Q0egVLMK0is5rf9FKKzd/IeBRTSO+RbUuNEmuJWLPE5KUMRo5RYQ/EWQtYWTaeLAjJz9feHbQZ7GXgSrGkw3bYqg3brjwIq8Mai91w11hUFfpZBWHCeG0apl2ibqbQAGMKU+Ne2DWrQlb1HL5HrpB9IqeXJ3kGPoF+Mb92dljMUVFjXuE=
+  on:
+    branch: master
+  skip_existing: true
+after_success:
+- coveralls --verbose
+before_install:
+- openssl aes-256-cbc -K $encrypted_ef0e98cf6d8a_key -iv $encrypted_ef0e98cf6d8a_iv
+  -in sec.tar.xz.enc -out sec.tar.xz -d
+- tar xvf sec.tar.xz

@@ -1,0 +1,6 @@
+wheel==0.33.6
+pytest==5.0.1
+pytest-cov
+flake8==3.7.8
+black==18.5b0
+freezegun==0.3.12

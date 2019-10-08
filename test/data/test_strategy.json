@@ -1,0 +1,35 @@
+{
+    "description": "Stocks with good test scores.",
+    "filterName": "testScore",
+    "title": "test",
+    "name": "test strategy",
+    "enable": true,
+    "prefix": "",
+    "suffix": "",
+    "icon": {
+        "size": 100,
+        "id": 1,
+        "color": 1
+    },
+    "query": {
+        "collection": "stocks",
+        "limit": 10,
+        "order" : [
+            {
+                "descending": true,
+                "field": "testScore_status"
+            },
+            {
+                "descending": true,
+                "field": "testScore_value"
+            }
+        ],
+        "where" : [
+            {
+                "operator": ">=",
+                "value": 0,
+                "field": "testScore_status"
+            }
+        ]
+    }
+}
