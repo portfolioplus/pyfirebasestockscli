@@ -1,5 +1,5 @@
-[![Build Status](https://travis-ci.org/portfolioplus/pyfirebasestockscli.svg?branch=initial)](https://travis-ci.org/portfolioplus/pyfirebasestockscli)
-[![Coverage Status](https://coveralls.io/repos/github/portfolioplus/pyfirebasestockscli/badge.svg?branch=initial)](https://coveralls.io/github/portfolioplus/pyfirebasestockscli?branch=initial)
+[![Build Status](https://travis-ci.org/portfolioplus/pyfirebasestockscli.svg?branch=master)](https://travis-ci.org/portfolioplus/pyfirebasestockscli)
+[![Coverage Status](https://coveralls.io/repos/github/portfolioplus/pyfirebasestockscli/badge.svg?branch=master)](https://coveralls.io/github/portfolioplus/pyfirebasestockscli?branch=master)
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/7f42400f9e794d45a35376b4cbdccd9f)](https://www.codacy.com/manual/SlashGordon/pyfirebasestockscli?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=portfolioplus/pyfirebasestockscli&amp;utm_campaign=Badge_Grade)
 
 # pyfirebasestockscli
