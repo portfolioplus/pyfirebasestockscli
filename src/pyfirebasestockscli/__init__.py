@@ -150,7 +150,18 @@ class CreateTagFile(FirbaseBase):
     def build(self):
         store = firestore.client()
         tag_docs = store.collection("tags").stream()
-        data = {}
+        stock_docs = store.collection("stocks").stream()
+        data = {'stocks': []}
+        for stock_dock in stock_docs:
+            stock_dock = stock_dock.to_dict()
+            data['stocks'].append({
+                'name': stock_dock['name'],
+                'symbols_eur': stock_dock['symbols_eur'],
+                'symbols_usd': stock_dock['symbols_usd'],
+                'tags': stock_dock['tags'],
+                'indices': stock_dock['indices'],
+                'country': stock_dock['country'],
+            })
         for tag_doc in tag_docs:
             tag_dict = tag_doc.to_dict()
             my_tags = set([tag for tag in tag_dict["tags"]])
