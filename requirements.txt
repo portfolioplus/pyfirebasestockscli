@@ -1,2 +1,2 @@
-firebase-admin==3.2.0
+firebase-admin==3.2.1
 pystockfilter>=1.0.6
