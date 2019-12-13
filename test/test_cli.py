@@ -151,11 +151,9 @@ class TestCLI(unittest.TestCase):
             map(lambda x: x.to_dict(), store.collection("stocks").stream())
         )
         for stock in stocks_doc:
-            is_ok = (
-                stock["last_price_eur"] is not None
-                and stock["last_price_usd"] is not None
-                and stock["last_price_usd"] != stock["last_price_eur"]
-            )
+            is_ok = all([price_sym is not None for key in
+                        ['last_price_usd', 'last_price_eur']
+                        for price_sym in stock[key]])
             self.assertTrue(is_ok, f"Stock has incorrect prices: {stock}")
 
     @monkey_env(test_env)

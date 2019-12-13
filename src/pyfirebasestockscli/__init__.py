@@ -48,7 +48,7 @@ def create_job(indices, stock_data):
 
     chunk_size = math.ceil((len(stocks_clean) / max_processes))
     chunks = [
-        stocks_clean[x : x + chunk_size]
+        stocks_clean[x: x + chunk_size]
         for x in range(0, len(stocks_clean), chunk_size)
     ]
     stocks = chunks[my_id]
@@ -75,7 +75,7 @@ class BatchWriter(object):
             if self.delete:
                 self.delete_collection(ref, 50)
             chunks = [
-                items[x : x + self.max_writes]
+                items[x: x + self.max_writes]
                 for x in range(0, len(items), self.max_writes)
             ]
             args = list(args)
@@ -113,7 +113,7 @@ class BatchUpdate(object):
             store = firestore.client()
             batch = store.batch()
             chunks = [
-                items[x : x + self.max_updates]
+                items[x: x + self.max_updates]
                 for x in range(0, len(items), self.max_updates)
             ]
             args = list(args)
@@ -257,8 +257,9 @@ class SyncFirebaseDB(FirbaseBase):
 
             my_doc_dict = my_doc.to_dict()
 
-            for price_key in (('last_price_eur','symbols_eur'), ('last_price_usd','symbols_usd'))
-                stock[price_key[0]] = {} 
+            for price_key in (('last_price_eur', 'symbols_eur'),
+                              ('last_price_usd', 'symbols_usd')):
+                stock[price_key[0]] = {}
                 # get prices for each symbol
                 for usd_symbol in my_doc_dict[price_key[1]]:
                     stock[price_key[0]][usd_symbol] = (
@@ -272,10 +273,12 @@ class SyncFirebaseDB(FirbaseBase):
                 for key, value in stock[price_key[0]].items():
                     if value is None:
                         self.logger.warning(
-                            f"Prices are not correct for {key}({stock_item.name})."
+                            f"Prices are not correct for {key}",
+                            f"({stock_item.name})."
                         )
-                    else 
-                        stock[price_key[0]][key] = stock[price_key[0]][key].close
+                    else:
+                        stock[price_key[0]][key] = \
+                            stock[price_key[0]][key].close
             yield my_doc, stock
 
 
