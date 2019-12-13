@@ -11,14 +11,14 @@
 from setuptools import setup, find_packages
 
 EXCLUDE_FROM_PACKAGES = ['test', 'test.*', 'test*']
-VERSION = '1.0.0'
+VERSION = '1.0.4'
 
 with open('README.md', 'r') as fh:
     long_description = fh.read()
 
 INSTALL_REQUIRES = (
     [
-        'firebase-admin==2.17.0',
+        'firebase-admin==3.2.1',
         'pystockfilter>=1.0.6'
     ]
 )
