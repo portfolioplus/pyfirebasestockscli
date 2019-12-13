@@ -284,7 +284,7 @@ class SyncFirebaseDB(FirbaseBase):
                 )
             if stock["last_price_usd"] == stock["last_price_eur"]:
                 self.logger.warning(
-                    f"""Prices are not correct for {stock}.
+                    f"""Prices are not correct for {stock_item.name}.
                     {stock['last_price_usd']} == {stock['last_price_eur']}"""
                 )
             stock["last_price_usd"] = (
