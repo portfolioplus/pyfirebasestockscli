@@ -245,37 +245,32 @@ class SyncFirebaseDB(FirbaseBase):
                 ]
 
             my_doc_dict = my_doc.to_dict()
-            my_doc_dict['symbols_usd'] = (
-                None
-                if len(my_doc_dict['symbols_usd']) == 0
-                else my_doc_dict['symbols_usd'][0]
-            )
-            my_doc_dict['symbols_eur'] = (
-                None
-                if len(my_doc_dict['symbols_eur']) == 0
-                else my_doc_dict['symbols_eur'][0]
-            )
-            if my_doc_dict['symbols_eur']:
-                stock['last_price_eur'] = (
+
+            stock['last_price_eur'] = {} 
+            for eur_symbol in my_doc_dict['symbols_eur']:
+                stock['last_price_eur'][eur_symbol] = (
                     Price.select(
-                        lambda p: p.symbol.name == my_doc_dict['symbols_eur']
+                        lambda p: p.symbol.name == eur_symbol
                     )
                     .order_by(lambda p: desc(p.date))
                     .first()
                 )
-            if my_doc_dict['symbols_usd']:
-                stock['last_price_usd'] = (
+            stock['last_price_usd'] = {} 
+            for usd_symbol in my_doc_dict['symbols_usd']:
+                stock['last_price_usd'][usd_symbol] = (
                     Price.select(
-                        lambda p: p.symbol.name == my_doc_dict['symbols_usd']
+                        lambda p: p.symbol.name == usd_symbol
                     )
                     .order_by(lambda p: desc(p.date))
                     .first()
                 )
             if stock['last_price_usd'] == stock['last_price_eur']:
-                self.logger.warning(
-                    f"""Prices are not correct for {stock}.
-                    {stock['last_price_usd']} == {stock['last_price_eur']}"""
-                )
+
+            for key, value in stock['last_price_usd'].items():
+                if value is None:
+                    self.logger.warning(
+                        f"Prices are not correct for {key}({stock})."
+                    )
             stock['last_price_usd'] = stock['last_price_usd'].close
             stock['last_price_eur'] = stock['last_price_eur'].close
             yield my_doc, stock
