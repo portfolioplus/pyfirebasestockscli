@@ -273,8 +273,8 @@ class SyncFirebaseDB(FirbaseBase):
                 for key, value in stock[price_key[0]].items():
                     if value is None:
                         self.logger.warning(
-                            f"Prices are not correct for {key}",
-                            f"({stock_item.name})."
+                            f'Prices are not correct for {key}'
+                            f'({stock_item.name}).'
                         )
                     else:
                         stock[price_key[0]][key] = \
