@@ -18,7 +18,7 @@ with open('README.md', 'r') as fh:
 
 INSTALL_REQUIRES = (
     [
-        'firebase-admin==3.2.1',
+        'firebase-admin==4.0.0',
         'pystockfilter>=1.0.6'
     ]
 )
