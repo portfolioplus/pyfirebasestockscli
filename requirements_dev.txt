@@ -1,5 +1,5 @@
 wheel==0.34.2
-pytest==5.3.5
+pytest==5.4.1
 pytest-cov
 flake8==3.7.9
 black==19.10b0
