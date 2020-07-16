@@ -218,6 +218,7 @@ class TestCLI(unittest.TestCase):
                     )
                 )
             )
+            data['indices'].sort()
             self.assertEqual(len(data['indices']), 2)
             self.assertEqual(data['indices'][0], 'DAX')
             self.assertEqual(data['indices'][1], 'OMX Helsinki 15')
