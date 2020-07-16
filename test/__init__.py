@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-""" pyjdpu
+""" pyfirebasestockscli
 
   Copyright 2019 Slash Gordon
 
