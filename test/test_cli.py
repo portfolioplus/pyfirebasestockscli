@@ -275,7 +275,7 @@ class TestCLI(unittest.TestCase):
         ):
             is_ok = all(
                 map(
-                    lambda x: f'{x}_status' in stock and f'{x}_value' in stock,
+                    lambda x, s=stock: f'{x}_status' in s and f'{x}_value' in s,
                     filter_names,
                 )
             )

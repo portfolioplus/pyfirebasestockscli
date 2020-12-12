@@ -517,6 +517,7 @@ def app(args=sys.argv[1:]):
         'indices': indices,
         'currencies': ['EUR', 'USD'],
         'prices': False,  # create db in fast mode
+        'create': True,
         'db_args': {
             'provider': 'sqlite',
             'filename': db_path,
